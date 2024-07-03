@@ -55,8 +55,8 @@ int main(int argc, char* argv[]) {
     }
     else if(argv[1] == "text")
     {
-        std::string text = argv[2]
-        int size = std::stoi(argv[3])
+        std::string text = argv[2];
+        int size = std::stoi(argv[3]);
         std::string caesarResult = caesarEncrypt(text, 2);
         std::string result = etenCalc(text, caesarResult, 1,size);
         std::cout << result << std::endl;
