@@ -31,25 +31,35 @@ std::string readFile(const std::string& filePath) {
     return content;
 }
 int main(int argc, char* argv[]) {
-    if (argc < 2) {
-        std::cout << "Syntax: eten-sum {file path}" << std::endl;
+    if (argc < 3) {
+        std::cout << "Syntax: eten-sum {mode} {file path or text} {hash lenght}" << std::endl;
         return 1;
     }
-    
-    std::string filePath = argv[1];
-    std::string fileContent;
-    int size = std::stoi(argv[2]);
-    
-    try {
-        fileContent = readFile(filePath);
-    } catch (const std::exception& e) {
-        std::cerr << e.what() << std::endl;
-        return 1;
-    }
+    if(argv[1] == "file"){
+        std::string filePath = argv[2];
+        std::string fileContent;
+        int size = std::stoi(argv[3]);
 
-    std::string caesarResult = caesarEncrypt(fileContent, 2);
-    std::string result = etenCalc(fileContent, caesarResult, 1,size);
-    std::cout << result << std::endl;
-    
-    return 0;
+        try {
+            fileContent = readFile(filePath);
+        } catch (const std::exception& e) {
+            std::cerr << e.what() << std::endl;
+            return 1;
+        }
+
+        std::string caesarResult = caesarEncrypt(fileContent, 2);
+        std::string result = etenCalc(fileContent, caesarResult, 1,size);
+        std::cout << result << std::endl;
+
+        return 0;
+    }
+    else if(argv[1] == "text")
+    {
+        std::string text = argv[2]
+        int size = std::stoi(argv[3])
+        std::string caesarResult = caesarEncrypt(text, 2);
+        std::string result = etenCalc(text, caesarResult, 1,size);
+        std::cout << result << std::endl;
+
+    }
 }
